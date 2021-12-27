@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 @SpringBootApplication
 @RestController
 public class SurveyApplication {
@@ -13,8 +17,10 @@ public class SurveyApplication {
 		SpringApplication.run(SurveyApplication.class, args);
 	}
     @GetMapping
-	public String hello() {
-		return "Hello World";
+	public List<String> hello() {
+		return Arrays.asList("Hello", "World");
+
+
 	}
 }
 
