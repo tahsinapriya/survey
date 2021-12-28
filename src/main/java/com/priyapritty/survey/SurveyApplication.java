@@ -13,16 +13,11 @@ import java.util.List;
 
 
 @SpringBootApplication
-@RestController
 public class SurveyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SurveyApplication.class, args);
 	}
-    @GetMapping
-	public List<Student> hello() {
-		return Arrays.asList(new Student(1L, "mariam","mariam.jamal@gmail.com",
-				LocalDate.of(2000, Month.JANUARY,5),21));
-	}
+
 }
 
