@@ -1,5 +1,7 @@
 package com.priyapritty.survey.config;
 
+import com.priyapritty.survey.answer.Answer;
+import com.priyapritty.survey.answer.AnswerRepository;
 import com.priyapritty.survey.group_question_mapping.GroupQuestionMapping;
 import com.priyapritty.survey.group_question_mapping.GroupQuestionMappingRepository;
 import com.priyapritty.survey.groups.Groups;
@@ -25,7 +27,7 @@ public class CommandLineRunnerConfig {
                                         OptionsRepository optionsRepository,
                                         GroupsRepository groupsRepository,
                                         GroupQuestionMappingRepository groupQuestionMappingRepository,
-                                        UsersRepository usersRepository){
+                                        UsersRepository usersRepository, AnswerRepository answerRepository){
         return args -> {
             QuestionType questionType1=new QuestionType ("multiple");
             questionTypeRepository.save(questionType1);
@@ -56,7 +58,6 @@ public class CommandLineRunnerConfig {
             optionsRepository.save(options4);
 
             Groups groups1=new Groups("Covid");
-
             groupsRepository.save(groups1);
 
             Groups groups2=new Groups("Basic");
@@ -68,9 +69,18 @@ public class CommandLineRunnerConfig {
             GroupQuestionMapping groupQuestionMapping1 =new GroupQuestionMapping(groups1,question1);
             groupQuestionMappingRepository.save(groupQuestionMapping1);
 
-            Users users=new Users("priya","priya@gmail.com");
-            usersRepository.save(users);
+            Users users1=new Users("priya","priya@gmail.com");
+            usersRepository.save(users1);
 
+            Users users2=new Users("pritty","pritty@gmail.com");
+            usersRepository.save(users2);
+
+
+            Answer answer=new Answer("male",users1,groups1,question1);
+            answerRepository.save(answer);
+
+            Answer answer1=new Answer("ctg",users2,groups2,question);
+            answerRepository.save(answer1);
 
         };
     }
