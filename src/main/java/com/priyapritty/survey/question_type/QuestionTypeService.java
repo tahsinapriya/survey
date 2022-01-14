@@ -20,5 +20,9 @@ public class QuestionTypeService {
     public List<QuestionType> getQuestionType() {
         return questionTypeRepository.findAll();
     }
+
+    public void postQuestionType(QuestionType questionType) {
+        questionTypeRepository.save(questionType);
+    }
 }
 
