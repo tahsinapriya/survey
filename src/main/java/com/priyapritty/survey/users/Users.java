@@ -1,6 +1,9 @@
 package com.priyapritty.survey.users;
 
+import com.priyapritty.survey.role.Role;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,8 +20,13 @@ public class Users {
             generator = "users_sequence"
     )
     private long id;
+    private String username;
     private String name;
     private String email;
+    private String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles = new ArrayList<>();
+
 
     public Users() {
     }
