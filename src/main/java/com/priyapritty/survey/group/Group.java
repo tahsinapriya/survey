@@ -1,34 +1,32 @@
-package com.priyapritty.survey.groups;
-import com.priyapritty.survey.groups.Groups;
+package com.priyapritty.survey.group;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table
-public class Groups {
+@Table(name = "groups")
+public class Group {
     @Id
     @SequenceGenerator(
-            name = "groups_sequence",
-            sequenceName = "groups_sequence",
+            name = "group_sequence",
+            sequenceName = "group_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "groups_sequence"
+            generator = "group_sequence"
     )
     private long id;
     private String descriptions;
 
-    public Groups() {
+    public Group() {
     }
 
-    public Groups(String descriptions) {
+    public Group(String descriptions) {
         this.descriptions = descriptions;
     }
 
-    public Groups(long id, String descriptions) {
+    public Group(long id, String descriptions) {
         this.id = id;
         this.descriptions = descriptions;
     }

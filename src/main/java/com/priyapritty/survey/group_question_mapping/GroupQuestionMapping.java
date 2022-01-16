@@ -1,7 +1,6 @@
 package com.priyapritty.survey.group_question_mapping;
 
-import com.priyapritty.survey.group_question_mapping.GroupQuestionMapping;
-import com.priyapritty.survey.groups.Groups;
+import com.priyapritty.survey.group.Group;
 import com.priyapritty.survey.question.Question;
 
 import javax.persistence.*;
@@ -22,20 +21,20 @@ public class GroupQuestionMapping {
     private long id;
 
     @ManyToOne
-    private Groups groups;
+    private Group group;
     @ManyToOne
     private Question question;
 
     public GroupQuestionMapping() {
     }
 
-    public GroupQuestionMapping(long id,Groups groups,Question question) {
+    public GroupQuestionMapping(long id, Group group, Question question) {
         this.id = id;
-        this.groups = groups;
+        this.group = group;
         this.question = question;
     }
-    public GroupQuestionMapping(Groups groups,Question question ) {
-        this.groups = groups;
+    public GroupQuestionMapping(Group group, Question question ) {
+        this.group = group;
         this.question = question;
     }
 

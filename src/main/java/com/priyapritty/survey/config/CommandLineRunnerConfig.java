@@ -4,16 +4,16 @@ import com.priyapritty.survey.answer.Answer;
 import com.priyapritty.survey.answer.AnswerRepository;
 import com.priyapritty.survey.group_question_mapping.GroupQuestionMapping;
 import com.priyapritty.survey.group_question_mapping.GroupQuestionMappingRepository;
-import com.priyapritty.survey.groups.Groups;
-import com.priyapritty.survey.groups.GroupsRepository;
-import com.priyapritty.survey.options.Options;
-import com.priyapritty.survey.options.OptionsRepository;
+import com.priyapritty.survey.group.Group;
+import com.priyapritty.survey.group.GroupRepository;
+import com.priyapritty.survey.option.Option;
+import com.priyapritty.survey.option.OptionRepository;
 import com.priyapritty.survey.question.Question;
 import com.priyapritty.survey.question.QuestionRepository;
 import com.priyapritty.survey.question_type.QuestionType;
 import com.priyapritty.survey.question_type.QuestionTypeRepository;
-import com.priyapritty.survey.users.Users;
-import com.priyapritty.survey.users.UsersRepository;
+import com.priyapritty.survey.user.User;
+import com.priyapritty.survey.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +24,10 @@ public class CommandLineRunnerConfig {
     @Bean
     CommandLineRunner commandLineRunner(QuestionTypeRepository questionTypeRepository,
                                         QuestionRepository questionRepository,
-                                        OptionsRepository optionsRepository,
-                                        GroupsRepository groupsRepository,
+                                        OptionRepository optionRepository,
+                                        GroupRepository groupRepository,
                                         GroupQuestionMappingRepository groupQuestionMappingRepository,
-                                        UsersRepository usersRepository, AnswerRepository answerRepository){
+                                        UserRepository userRepository, AnswerRepository answerRepository){
         return args -> {
             QuestionType questionType1=new QuestionType ("multiple");
             questionTypeRepository.save(questionType1);
@@ -45,41 +45,41 @@ public class CommandLineRunnerConfig {
             Question question1=new Question ("gender?", questionType1);
             questionRepository.save(question1);
 
-            Options options1=new Options("ctg",question);
-            optionsRepository.save(options1);
+            Option options1=new Option("ctg",question);
+            optionRepository.save(options1);
 
-            Options options2=new Options("Barishal",question);
-            optionsRepository.save(options2);
+            Option option2=new Option("Barishal",question);
+            optionRepository.save(option2);
 
-            Options options3=new Options("male",question1);
-            optionsRepository.save(options3);
+            Option option3=new Option("male",question1);
+            optionRepository.save(option3);
 
-            Options options4=new Options("Female",question1);
-            optionsRepository.save(options4);
+            Option option4=new Option("Female",question1);
+            optionRepository.save(option4);
 
-            Groups groups1=new Groups("Covid");
-            groupsRepository.save(groups1);
+            Group group1 =new Group("Covid");
+            groupRepository.save(group1);
 
-            Groups groups2=new Groups("Basic");
-            groupsRepository.save(groups2);
+            Group group2 =new Group("Basic");
+            groupRepository.save(group2);
 
-            GroupQuestionMapping groupQuestionMapping =new GroupQuestionMapping(groups1,question);
+            GroupQuestionMapping groupQuestionMapping =new GroupQuestionMapping(group1,question);
             groupQuestionMappingRepository.save(groupQuestionMapping);
 
-            GroupQuestionMapping groupQuestionMapping1 =new GroupQuestionMapping(groups1,question1);
+            GroupQuestionMapping groupQuestionMapping1 =new GroupQuestionMapping(group1,question1);
             groupQuestionMappingRepository.save(groupQuestionMapping1);
 
-            Users users1=new Users("priya","priya@gmail.com");
-            usersRepository.save(users1);
+            User user1=new User("priya","priya@gmail.com");
+            userRepository.save(user1);
 
-            Users users2=new Users("pritty","pritty@gmail.com");
-            usersRepository.save(users2);
+            User user2=new User("pritty","pritty@gmail.com");
+            userRepository.save(user2);
 
 
-            Answer answer=new Answer("male",users1,groups1,question1);
+            Answer answer=new Answer("male",user1, group1,question1);
             answerRepository.save(answer);
 
-            Answer answer1=new Answer("ctg",users2,groups2,question);
+            Answer answer1=new Answer("ctg",user2, group2,question);
             answerRepository.save(answer1);
 
         };

@@ -1,38 +1,36 @@
-package com.priyapritty.survey.options;
-import com.priyapritty.survey.options.Options;
+package com.priyapritty.survey.option;
 import com.priyapritty.survey.question.Question;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table
-public class Options {
+public class Option {
     @Id
     @SequenceGenerator(
-            name = "options_sequence",
-            sequenceName = "options_sequence",
+            name = "option_sequence",
+            sequenceName = "option_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "options_sequence"
+            generator = "option_sequence"
     )
     private long id;
     private String descriptions;
     @ManyToOne
     private Question question;
 
-    public Options() {
+    public Option() {
     }
 
-    public Options(long id ,String descriptions,Question question) {
+    public Option(long id , String descriptions, Question question) {
         this.id = id;
         this.descriptions = descriptions;
         this.question = question;
     }
 
-    public Options(String descriptions,Question question) {
+    public Option(String descriptions, Question question) {
         this.descriptions = descriptions;
         this.question = question;
     }

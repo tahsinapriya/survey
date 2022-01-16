@@ -1,12 +1,9 @@
 package com.priyapritty.survey.answer;
-import com.priyapritty.survey.answer.Answer;
-import com.priyapritty.survey.groups.Groups;
+import com.priyapritty.survey.group.Group;
 import com.priyapritty.survey.question.Question;
-import com.priyapritty.survey.users.Users;
-import org.apache.catalina.User;
+import com.priyapritty.survey.user.User;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table
@@ -24,27 +21,27 @@ public class Answer {
     private long id;
     private String answer;
     @ManyToOne
-    private Users users;
+    private User user;
     @ManyToOne
-    private Groups groups;
+    private Group group;
     @ManyToOne
     private Question question;
 
     public Answer() {
     }
 
-    public Answer(long id, String answer, Users users, Groups groups, Question question) {
+    public Answer(long id, String answer, User user, Group group, Question question) {
         this.id = id;
         this.answer = answer;
-        this.users = users;
-        this.groups = groups;
+        this.user = user;
+        this.group = group;
         this.question = question;
     }
 
-    public Answer(String answer, Users users, Groups groups, Question question) {
+    public Answer(String answer, User users, Group group, Question question) {
         this.answer = answer;
-        this.users = users;
-        this.groups = groups;
+        this.user = users;
+        this.group = group;
         this.question = question;
     }
 
@@ -64,20 +61,20 @@ public class Answer {
         this.answer = answer;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User users) {
+        this.user = users;
     }
 
-    public Groups getGroups() {
-        return groups;
+    public Group getGroups() {
+        return group;
     }
 
-    public void setGroups(Groups groups) {
-        this.groups = groups;
+    public void setGroups(Group group) {
+        this.group = group;
     }
 
     public Question getQuestion() {

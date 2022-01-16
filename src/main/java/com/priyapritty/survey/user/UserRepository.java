@@ -1,10 +1,10 @@
-package com.priyapritty.survey.groups;
+package com.priyapritty.survey.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GroupsRepository extends JpaRepository<Groups,Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
 
 }
 

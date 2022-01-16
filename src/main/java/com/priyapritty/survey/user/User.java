@@ -1,4 +1,4 @@
-package com.priyapritty.survey.users;
+package com.priyapritty.survey.user;
 
 import com.priyapritty.survey.role.Role;
 
@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
-public class Users {
+@Table(name = "users")
+public class User {
     @Id
     @SequenceGenerator(
-            name = "users_sequence",
-            sequenceName = "users_sequence",
+            name = "user_sequence",
+            sequenceName = "user_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "users_sequence"
+            generator = "user_sequence"
     )
     private long id;
     private String username;
@@ -28,16 +28,16 @@ public class Users {
     private List<Role> roles = new ArrayList<>();
 
 
-    public Users() {
+    public User() {
     }
 
-    public Users(long id, String name, String email) {
+    public User(long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
-    public Users(String name, String email) {
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
