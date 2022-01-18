@@ -69,10 +69,10 @@ public class CommandLineRunnerConfig {
             GroupQuestionMapping groupQuestionMapping1 =new GroupQuestionMapping(group1,question1);
             groupQuestionMappingRepository.save(groupQuestionMapping1);
 
-            User user1=new User("priya","priya@gmail.com");
+            User user1=new User("priya","priya@gmail.com","Tahsina Priya","12345" );
             userRepository.save(user1);
 
-            User user2=new User("pritty","pritty@gmail.com");
+            User user2=new User("pritty","pritty@gmail.com","Tanzina Pritty","123456");
             userRepository.save(user2);
 
 
