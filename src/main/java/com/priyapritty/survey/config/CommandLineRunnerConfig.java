@@ -12,6 +12,8 @@ import com.priyapritty.survey.question.Question;
 import com.priyapritty.survey.question.QuestionRepository;
 import com.priyapritty.survey.question_type.QuestionType;
 import com.priyapritty.survey.question_type.QuestionTypeRepository;
+import com.priyapritty.survey.role.Role;
+import com.priyapritty.survey.role.RoleRepository;
 import com.priyapritty.survey.user.User;
 import com.priyapritty.survey.user.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -27,7 +29,8 @@ public class CommandLineRunnerConfig {
                                         OptionRepository optionRepository,
                                         GroupRepository groupRepository,
                                         GroupQuestionMappingRepository groupQuestionMappingRepository,
-                                        UserRepository userRepository, AnswerRepository answerRepository){
+                                        UserRepository userRepository, RoleRepository roleRepository,
+                                        AnswerRepository answerRepository){
         return args -> {
             QuestionType questionType1=new QuestionType ("multiple");
             questionTypeRepository.save(questionType1);
@@ -81,6 +84,9 @@ public class CommandLineRunnerConfig {
 
             Answer answer1=new Answer("ctg",user2, group2,question);
             answerRepository.save(answer1);
+
+            Role role1 = new Role(1,"Admin");
+            roleRepository.save(role1);
 
         };
     }
