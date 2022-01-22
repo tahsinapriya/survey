@@ -88,6 +88,9 @@ public class CommandLineRunnerConfig {
             Role role1 = new Role(1,"Admin");
             roleRepository.save(role1);
 
+            user1.getRoles().add(role1);
+            userRepository.save(user1);
+
         };
     }
 }

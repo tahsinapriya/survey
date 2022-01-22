@@ -8,6 +8,6 @@ import javax.jws.soap.SOAPBinding;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-
+    User findByName(String name);
 }
 

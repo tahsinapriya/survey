@@ -2,6 +2,7 @@ package com.priyapritty.survey.role;
 
 import com.priyapritty.survey.role.Role;
 import com.priyapritty.survey.role.RoleRepository;
+import com.priyapritty.survey.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class RoleService {
 
     public void postRole(Role role){
         roleRepository.save(role);
+    }
+
+    public Role getRole(String name) {
+        return roleRepository.findByName(name);
     }
 
 }
